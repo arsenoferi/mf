@@ -45,5 +45,8 @@ class User_model extends CI_Model{
         return $show->result_array();
     }
 
-
+    Public function test()
+    {
+        
+    }
 }
