@@ -1,6 +1,6 @@
-{coba}
-
-{wow}
-{nama}
-{umur}
+{coba}
+
+{wow}
+{nama}
+{umur}
 {/wow}
