@@ -37,6 +37,8 @@ class ManagementAssigment extends CI_Controller {
         $sort=array('project_idproject'=> $data['project']);//sort based on project
         $data['assigment']=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort)->get()->result_array();
         $this->seno->template('ManagementAssigment/assign',$data,'Assign Anggota','Assign Anggota');
+
+        print_r($data['pegawai']);
         
 
     }
@@ -46,10 +48,12 @@ class ManagementAssigment extends CI_Controller {
         $id_karyawan = $this->uri->segment(3);
         $project_idproject = $this->uri->segment(4);
         $sort= array('user_no_pegawai'=>$id_karyawan,'project_idproject'=>$project_idproject);
+        $sort2= array('project_idproject'=>$project_idproject, 'posisi'=>'katim');
 
         $query=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort)->get();
+        $query2=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort2)->get();
 
-        if($query->num_rows()>0)
+        if($query->num_rows()>0 or $query2->num_rows() > 1)
             {
                 $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
             }
