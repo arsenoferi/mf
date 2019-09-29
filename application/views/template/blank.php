@@ -191,6 +191,10 @@
     $(window).on('load',function(){
         $('#myModal').modal('show');
     });
+
+    $(document).ready(function() {
+      $('#display').DataTable();
+    } );
   </script>
 
 

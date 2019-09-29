@@ -10,7 +10,7 @@
 
             <div class="table-responsive">
 
-              <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+              <table class="table table-bordered" id="display" width="100%" cellspacing="0">
 
                 <thead>
 
@@ -22,7 +22,7 @@
 
                     <th>Posisi</th>
 
-                    <th>Assign</th>
+                    <th>Hapus</th>
 
                   </tr>
 
@@ -38,7 +38,7 @@
 
                     <th>Posisi</th>
 
-                    <th>Assign</th>
+                    <th>Hapus</th>
 
                   </tr>
 
@@ -46,7 +46,7 @@
 
                 <tbody>
 
-                  {pegawai}
+                  {assigment}
 
                   <tr>
 
@@ -56,7 +56,7 @@
 
                     <td>{posisi}</td>
 
-                    <th><a href="<?php echo base_url()?>ManagementAssigment/action_assign/{no_pegawai}{/pegawai}/{project}" type="button" class="btn btn-info">Assign</a></th>
+                    <th><a href="<?php echo base_url()?>ManagementAssigment/action_assign/{no_pegawai}{/assigment}/{project}" type="button" class="btn btn-info"> Assign </a></th>
 
                   </tr>
 
