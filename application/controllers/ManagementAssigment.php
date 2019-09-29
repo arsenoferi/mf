@@ -24,6 +24,7 @@ class ManagementAssigment extends CI_Controller {
 
     public function index()
     {
+        
 
     }
 
