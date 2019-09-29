@@ -56,7 +56,7 @@
 
                     <td>{posisi}</td>
 
-                    <th><a href="<?php echo base_url()?>ManagementAssigment/action_assign/{no_pegawai}{/assigment}/{project}" type="button" class="btn btn-info"> Assign </a></th>
+                    <th><a href="<?php echo base_url()?>ManagementAssigment/action_hapus/{no_pegawai}{/assigment}/{project}" type="button" class="btn btn-info"> Hapus </a></th>
 
                   </tr>
 
