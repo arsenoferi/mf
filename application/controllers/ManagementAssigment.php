@@ -31,8 +31,9 @@ class ManagementAssigment extends CI_Controller {
 
     Public function assign()
     {
-
-        
+        $class = array('katim','anggota');
+        $data['pegawai']= $this->db->where_in('posisi',$class)->get('user')->result_array();
+        $this->seno->template('ManagementAssigment/assign',$data,'Assign Anggota','Assign Anggota');
 
     }
 
