@@ -47,11 +47,11 @@ class ManagementAssigment extends CI_Controller {
         $project_idproject = $this->uri->segment(4);
         $sort= array('user_no_pegawai'=>$id_karyawan,'project_idproject'=>$project_idproject);
 
-        $query=$this->db->where($sort)->get('assign');
+        $query=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort)->get();
 
         if($query->num_rows()>0)
             {
-
+                $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
             }
         else
             {
@@ -73,7 +73,7 @@ class ManagementAssigment extends CI_Controller {
 
     public function action_hapus()
     {
-        
+
     }
 
 
