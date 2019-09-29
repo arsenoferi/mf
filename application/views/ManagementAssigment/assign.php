@@ -22,6 +22,8 @@
 
                     <th>Posisi</th>
 
+                    <th>Assign</th>
+
                   </tr>
 
                 </thead>
@@ -54,11 +56,11 @@
 
                     <td>{posisi}</td>
 
-                    <th>
+                    <th><a href="<?php echo base_url()?>ManagementAssigment/action_assign/{no_pegawai}{/pegawai}/{project}" type="button" class="btn btn-info">Assign</a></th>
 
                   </tr>
 
-                  {/pegawai}
+                  
 
                 </thead>
 
