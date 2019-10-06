@@ -29,7 +29,8 @@ class Seno {
             (
                array ('nama'=>'User Admin', 'link'=> base_url('UserAdmin'), 'icon'=>'glyphicon glyphicon-grain'),
                array ('nama'=>'Anggota Bursa', 'link'=> base_url('AnggotaBursa'), 'icon'=>'glyphicon glyphicon-grain'),
-               array ('nama'=>'Project', 'link'=> base_url('Project'), 'icon'=>'glyphicon glyphicon-grain')
+               array ('nama'=>'Project', 'link'=> base_url('Project'), 'icon'=>'glyphicon glyphicon-grain'),
+               array ('nama'=>'Upload File', 'link'=> base_url('UploadFile'), 'icon'=>'glyphicon glyphicon-grain')
             );
 
             return $akses;

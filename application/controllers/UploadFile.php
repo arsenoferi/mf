@@ -21,5 +21,10 @@ class UploadFile extends CI_Controller {
         $this->load->model('User_model');
 
     }
+
+    public function index()
+    {
+        
+    }
 }
 ?>
