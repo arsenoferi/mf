@@ -114,7 +114,5 @@ class ManagementAssigment extends CI_Controller {
                 }
     }
 
-    public function coba (){
-        $test = $this->db->get_where('user',array('no_pegawai'=>$id_karyawan))->result_array();
-    }
+    
 }
