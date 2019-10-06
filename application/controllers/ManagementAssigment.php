@@ -50,16 +50,36 @@ class ManagementAssigment extends CI_Controller {
 
         $query=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort)->get();
         $query2=$this->db->select('*')->from('assign')->join('user','assign.user_no_pegawai=user.no_pegawai')->where($sort2)->get();
+        $extract_posisi = $test = $this->db->get_where('user',array('no_pegawai'=>$id_karyawan))->result_array();
+        $posisi=$extract_posisi[0]['posisi'];
+            if($posisi == "katim"){
+                if($query->num_rows()>0)
+                    {
+                        $this->seno->popup('Gagal Memasukan Data ','Gagal Memasukan Data Katim Hanya boleh 1 orang',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                    }
+                else
+                    {
+                        if ($query2->num_rows() >= 1)
+                        {
+                            $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                        }
+                        else
+                        {
+                            $insert=array(
+                                'user_no_pegawai' => $id_karyawan,
+                                'project_idproject' => $project_idproject
+                            );
 
-        if($query->num_rows()>0)
-            {
-                $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
-            }
-        else
-            {
-                if ($query2->num_rows() >= 1)
-                {
-                    $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                            if($this->db->insert('assign', $insert))
+                            {
+                                $this->seno->popup('sukses memasukan data','sukses memasukan data',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                            }
+                            else
+                            {
+                                $this->seno->popup('Gagal Memasukan Data','Gagal Memasukan Data',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -78,26 +98,23 @@ class ManagementAssigment extends CI_Controller {
                     }
                 }
             }
+
+            public function action_hapus()
+            {
+                $id_karyawan = $this->uri->segment(3);
+                $project_idproject = $this->uri->segment(4);
+                $sortir = array('user_no_pegawai'=>$id_karyawan,'project_idproject'=>$project_idproject);
+                if($this->db->delete('assign',$sortir))
+                {
+                    $this->seno->popup('Sukses menghapus user','Sukses Menghapus User',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                }
+                else
+                {
+                    $this->seno->popup('Gagal menghapus user','Gagal Menghapus User',Base_url('ManagementAssigment/assign/'.$project_idproject));
+                }
     }
 
-    public function action_hapus()
-    {
-        $id_karyawan = $this->uri->segment(3);
-        $project_idproject = $this->uri->segment(4);
-        $sortir = array('user_no_pegawai'=>$id_karyawan,'project_idproject'=>$project_idproject);
-        if($this->db->delete('assign',$sortir))
-        {
-            $this->seno->popup('Sukses menghapus user','Sukses Menghapus User',Base_url('ManagementAssigment/assign/'.$project_idproject));
-        }
-        else
-        {
-            $this->seno->popup('Gagal menghapus user','Gagal Menghapus User',Base_url('ManagementAssigment/assign/'.$project_idproject));
-        }
+    public function coba (){
+        $test = $this->db->get_where('user',array('no_pegawai'=>$id_karyawan))->result_array();
     }
-
-
-
-
-    
-
 }
